@@ -1,0 +1,45 @@
+body {
+  overflow-x: hidden;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.nav-link {
+  color: black !important;
+}
+
+.navbar-brand {
+  color: black !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  background-color: rgb(1, 1, 51) !important;
+}
+
+.nav-link {
+  color: #fff !important;
+}
+
+.navbar-brand {
+  color: white !important;
+}
+
+h1 {
+  font-size: 18px !important;
+  text-align: left !important;
+}
+
+.img-fluid {
+  height: 200px !important;
+}
