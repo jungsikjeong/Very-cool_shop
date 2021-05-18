@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { GoSearch } from 'react-icons/go';
 import { AiOutlineUserAdd } from 'react-icons/ai';
 import { AiOutlineLogin } from 'react-icons/ai';
 import { RiShoppingBagLine } from 'react-icons/ri';
+import { BsFillPersonFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
-import SubMenuSHOP from './SubMenu/SubMenuSHOP';
-import SubMenuUNISEX from './SubMenu/SubMenuUNISEX';
-import SubMenuSALE from './SubMenu/SubMenuSALE';
-import SubMenuCOMMUNICATE from './SubMenu/SubMenuCOMMUNICATE';
+import SubMenuSHOP from './sections/SubMenu/SubMenuSHOP';
+import SubMenuUNISEX from './sections/SubMenu/SubMenuUNISEX';
+import SubMenuSALE from './sections/SubMenu/SubMenuSALE';
+import SubMenuCOMMUNICATE from './sections/SubMenu/SubMenuCOMMUNICATE';
 
 const GlobalBarWrapper = styled.header`
   width: 100%;
@@ -53,6 +54,9 @@ const SearchBar = styled.div`
 
 const Utility = styled.div`
   display: flex;
+  &.Fixed {
+    margin-left: auto;
+  }
 
   div {
     display: flex;
@@ -74,10 +78,23 @@ const GlobalNav = styled.nav`
   height: 45px;
   color: #fff;
 
+  &.Fixed {
+    background: black;
+    padding: 15px 1.5rem;
+    position: fixed;
+    top: 0;
+  }
+
+  h1 {
+    /* line-height: 20px; */
+    font-weight: bold;
+  }
+
   ul {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
     height: 100%;
     li {
       padding: 0 25px;
@@ -89,6 +106,7 @@ const SLink = styled(Link)`
   transition: 0.2s ease-in-out;
   font-size: 10px;
   line-height: 12px;
+
   :hover {
     color: #06bd9e;
   }
@@ -96,12 +114,26 @@ const SLink = styled(Link)`
 
 const GlobalBar = () => {
   const [HoverState, setHoverState] = useState('');
+  const [PageYOffset, setPageYOffset] = useState(0);
+  const [Fixed, setFixed] = useState(false);
 
   const hoverHandler = (hoverState) => {
     setHoverState(hoverState);
   };
 
-  // const ref = useRef();
+  const scrollHandler = useCallback(() => {
+    const { pageYOffset } = window;
+    setFixed(PageYOffset > 40);
+    // console.log(Fixed);
+    setPageYOffset(pageYOffset);
+  }, [PageYOffset]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', scrollHandler);
+
+    return () => window.removeEventListener('scroll', scrollHandler);
+  }, [scrollHandler]);
+
   return (
     <GlobalBarWrapper>
       <GlobalSearch>
@@ -120,23 +152,38 @@ const GlobalBar = () => {
         </SearchBar>
 
         <Utility>
-          <div>
-            <AiOutlineUserAdd size={20} />
-            <span>JOIN</span>
-          </div>
-          <div>
-            <AiOutlineLogin size={20} />
-            <span>LOGIN</span>
-          </div>
-          <div>
-            <RiShoppingBagLine size={20} /> <span>0</span>
-            {/* 나중에 length */}
-          </div>
+          <Link to="#">
+            <div>
+              <AiOutlineUserAdd size={20} />
+              <span>JOIN</span>
+            </div>
+          </Link>
+          <Link to="#">
+            <div>
+              <AiOutlineLogin size={20} />
+              <span>LOGIN</span>
+            </div>
+          </Link>
+          <Link to="#">
+            <div>
+              <RiShoppingBagLine size={20} /> <span>0</span>
+              {/* 나중에 length */}
+            </div>
+          </Link>
         </Utility>
       </GlobalSearch>
 
-      <GlobalNav>
+      <GlobalNav className={Fixed && 'Fixed'}>
         <ul>
+          {Fixed && (
+            <div style={{ marginRight: 'auto' }}>
+              <Link to="/">
+                <h1 className={Fixed && 'Fixed'}>
+                  V I N T A G E <br />V E L L A
+                </h1>
+              </Link>
+            </div>
+          )}
           <li
             onMouseEnter={() => hoverHandler('shop')}
             onMouseLeave={() => hoverHandler('')}
@@ -166,6 +213,29 @@ const GlobalBar = () => {
             <SLink to="#">COMMUNICATE</SLink>
             <SubMenuCOMMUNICATE HoverState={HoverState} />
           </li>
+
+          {Fixed && (
+            <Utility className={Fixed && 'Fixed'}>
+              <Link to="#">
+                <div>
+                  <GoSearch size={15} />
+                  <span>SEARCH</span>
+                </div>
+              </Link>
+              <Link to="#">
+                <div>
+                  <BsFillPersonFill size={15} />
+                  <span>MY</span>
+                </div>
+              </Link>
+              <Link to="#">
+                <div>
+                  <RiShoppingBagLine size={15} /> <span>0</span>
+                  {/* 나중에 length */}
+                </div>
+              </Link>
+            </Utility>
+          )}
         </ul>
       </GlobalNav>
     </GlobalBarWrapper>

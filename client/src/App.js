@@ -2,7 +2,8 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import MainPage from './components/views/MainPage/MainPage';
-import Navbar from './components/views/Navbar/Navbar';
+import GlobalBar from './components/views/Navbar/GlobalBar';
+
 import GlobalStyles from './components/utils/GlobalStyles';
 //Redux
 import { Provider } from 'react-redux';
@@ -22,7 +23,7 @@ const App = () => {
       <Router>
         <>
           <GlobalStyles />
-          <Navbar />
+          <GlobalBar />
           <Switch>
             <Route exact path="/" component={MainPage} />
           </Switch>
