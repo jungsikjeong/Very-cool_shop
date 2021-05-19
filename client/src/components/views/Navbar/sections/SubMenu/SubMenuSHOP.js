@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import SubMenuItem from '../SubMenuItem/SubMenuItem';
 
 const SLink = styled(Link)`
   font-size: 10px;
@@ -14,17 +15,18 @@ const SubMenuContainer = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  width: 1280px;
+  /* width: 1280px; */
+  width: 100%;
   margin: 0 auto;
   height: auto;
   background-color: rgba(245, 245, 245, 0.95);
-  opacity: 0;
-  visibility: hidden;
+  opacity: 1;
+  visibility: visible;
   transition: 0.3s ease-in-out;
+  display: flex;
 
   .wrapper {
     display: flex;
-    align-items: flex-start;
     padding: 1.5rem 4rem;
     text-transform: uppercase;
     color: black;
@@ -53,8 +55,8 @@ const SubMenuSHOP = ({ HoverState }) => {
       ref.current.style.opacity = '1';
       ref.current.style.visibility = 'visible';
     } else {
-      ref.current.style.opacity = '0';
-      ref.current.style.visibility = 'hidden';
+      // ref.current.style.opacity = '0';
+      // ref.current.style.visibility = 'hidden';
     }
   }, [HoverState]);
   return (
@@ -88,6 +90,8 @@ const SubMenuSHOP = ({ HoverState }) => {
           </li>
         </ul>
       </div>
+
+      <SubMenuItem />
     </SubMenuContainer>
   );
 };
