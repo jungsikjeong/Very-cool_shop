@@ -116,7 +116,8 @@ const GlobalNav = styled.nav`
 const SLink = styled(Link)`
   transition: 0.2s ease-in-out;
 
-  font-size: 1rem;
+  /* font-size: 1rem; */
+  font-size: 10px;
   line-height: 12px;
 
   &.isMobile {
