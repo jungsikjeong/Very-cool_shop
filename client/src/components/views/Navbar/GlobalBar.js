@@ -120,7 +120,7 @@ const SLink = styled(Link)`
   line-height: 12px;
 
   &.isMobile {
-    font-size: 0.5rem;
+    font-size: 10px;
   }
 
   :hover {
