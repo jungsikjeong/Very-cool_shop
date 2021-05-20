@@ -14,6 +14,7 @@ const Container = styled.div`
 
 const BannerWrap = styled.div`
   img {
+    max-width: 100%;
     width: 100%;
   }
 `;
