@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import SubMenuItem from '../SubMenuItem/SubMenuItem';
 
 const SLink = styled(Link)`
-  font-size: 10px;
+  font-size: 0.9rem;
 
   :hover {
     border-bottom: 1px solid black;
@@ -13,20 +13,19 @@ const SLink = styled(Link)`
 
 const SubMenuContainer = styled.div`
   position: absolute;
+  z-index: 100;
   top: 100%;
   left: 0;
-  /* width: 1280px; */
   width: 100%;
   margin: 0 auto;
   height: auto;
   background-color: rgba(245, 245, 245, 0.95);
-  opacity: 1;
-  visibility: visible;
+  opacity: 0;
+  visibility: hidden;
   transition: 0.3s ease-in-out;
   display: flex;
 
   .wrapper {
-    display: flex;
     padding: 1.5rem 4rem;
     text-transform: uppercase;
     color: black;
@@ -39,6 +38,7 @@ const SubMenuContainer = styled.div`
     ul {
       display: flex;
       align-items: flex-start;
+      justify-content: flex-start;
       flex-direction: column;
 
       li {
@@ -55,8 +55,8 @@ const SubMenuSHOP = ({ HoverState }) => {
       ref.current.style.opacity = '1';
       ref.current.style.visibility = 'visible';
     } else {
-      // ref.current.style.opacity = '0';
-      // ref.current.style.visibility = 'hidden';
+      ref.current.style.opacity = '0';
+      ref.current.style.visibility = 'hidden';
     }
   }, [HoverState]);
   return (
@@ -90,7 +90,6 @@ const SubMenuSHOP = ({ HoverState }) => {
           </li>
         </ul>
       </div>
-
       <SubMenuItem />
     </SubMenuContainer>
   );

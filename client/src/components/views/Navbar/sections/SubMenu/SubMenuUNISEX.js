@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const SLink = styled(Link)`
-  font-size: 10px;
+  font-size: 0.9rem;
 
   :hover {
     border-bottom: 1px solid black;
@@ -11,10 +11,11 @@ const SLink = styled(Link)`
 `;
 
 const SubMenuContainer = styled.div`
+  z-index: 100;
   position: absolute;
   top: 100%;
   left: 0;
-  width: 1280px;
+  width: 100%;
   margin: 0 auto;
   height: auto;
   background-color: rgba(245, 245, 245, 0.95);

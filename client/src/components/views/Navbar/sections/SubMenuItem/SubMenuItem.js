@@ -4,12 +4,13 @@ import topImage from '../../../../../assets/images/top01.jpg';
 import bottomImage from '../../../../../assets/images/bottom.jpeg';
 import onepieceImage from '../../../../../assets/images/onepiece.jpg';
 import setImage from '../../../../../assets/images/set.jpeg';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   padding-top: 15px;
   padding-bottom: 15px;
-  /* flex-basis: 50%; */
-  margin-left: auto;
+  margin: 0 auto;
+  width: 50%;
 `;
 
 const Wrapper = styled.div`
@@ -18,19 +19,19 @@ const Wrapper = styled.div`
   color: black;
 
   div {
+    width: 100%;
     display: flex;
     flex-direction: column;
-    margin-right: 15px;
-    font-size: 10px;
+    font-size: 0.9rem;
+    margin-right: 20px;
 
     :last-child {
-      margin-right: 0;
+      margin: 0;
     }
 
     .textWrap {
       flex-grow: 1;
       text-align: left;
-      width: 90%;
 
       .title {
         margin-top: 10px;
@@ -46,9 +47,6 @@ const Wrapper = styled.div`
     img {
       max-width: 100%;
       height: auto;
-      height: 150px;
-      margin-right: 15px;
-      display: inline-block;
       overflow: hidden;
       border-radius: 5px;
 
@@ -93,21 +91,23 @@ const SubMenuItem = () => {
       <Wrapper>
         {items.map((item) => (
           <div>
-            <img src={item.src} alt="top" />
+            <Link to="/">
+              <img src={item.src} alt="top" />
 
-            <div className="textWrap">
-              <span className="title">
-                {item.title.length > 11
-                  ? `${item.title.slice(0, 11)}...`
-                  : item.title}
-              </span>
-              <p className="content">
-                {item.content.length > 11
-                  ? `${item.content.slice(0, 15)}...`
-                  : item.content}
-              </p>
-              <p>{item.price}</p>
-            </div>
+              <div className="textWrap">
+                <span className="title">
+                  {item.title.length > 11
+                    ? `${item.title.slice(0, 11)}...`
+                    : item.title}
+                </span>
+                <p className="content">
+                  {item.content.length > 11
+                    ? `${item.content.slice(0, 15)}...`
+                    : item.content}
+                </p>
+                <p>{item.price}</p>
+              </div>
+            </Link>
           </div>
         ))}
       </Wrapper>
