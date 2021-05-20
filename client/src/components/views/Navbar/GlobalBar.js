@@ -110,17 +110,18 @@ const GlobalNav = styled.nav`
     li {
       padding: 0 25px;
     }
-
-    &.isMobile {
-      /* padding: 0 20px; */
-    }
   }
 `;
 
 const SLink = styled(Link)`
   transition: 0.2s ease-in-out;
+
   font-size: 1rem;
   line-height: 12px;
+
+  &.isMobile {
+    font-size: 0.5rem;
+  }
 
   :hover {
     color: #06bd9e;
@@ -229,20 +230,28 @@ const GlobalBar = () => {
         >
           <ul className={isMobile && 'isMobile'}>
             <li>
-              <SLink to="#">SHOP</SLink>
+              <SLink to="#" className={isMobile && 'isMobile'}>
+                SHOP
+              </SLink>
               <SubMenuSHOP HoverState={HoverState} />
             </li>
             <li>
-              <SLink to="#">UNISEX & BRAND</SLink>
+              <SLink to="#" className={isMobile && 'isMobile'}>
+                UNISEX & BRAND
+              </SLink>
               <SubMenuUNISEX HoverState={HoverState} />
             </li>
             <li>
-              <SLink to="#">SALE</SLink>
+              <SLink to="#" className={isMobile && 'isMobile'}>
+                SALE
+              </SLink>
               <SubMenuSALE HoverState={HoverState} />
             </li>
 
             <li>
-              <SLink to="#">COMMUNICATE</SLink>
+              <SLink to="#" className={isMobile && 'isMobile'}>
+                COMMUNICATE
+              </SLink>
               <SubMenuCOMMUNICATE HoverState={HoverState} />
             </li>
           </ul>
