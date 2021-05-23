@@ -7,6 +7,8 @@ import { useMediaQuery } from 'react-responsive';
 const Container = styled.div`
   color: black;
   overflow-x: hidden;
+  /* padding-top: 4.5rem; */
+  height: 100vh;
 `;
 
 const MainPage = () => {
@@ -14,11 +16,7 @@ const MainPage = () => {
     query: '(max-width:767px)',
   });
 
-  return (
-    <Container>
-      <SliderJS />
-    </Container>
-  );
+  return <Container>{/* <SliderJS /> */}</Container>;
 };
 
 export default MainPage;
