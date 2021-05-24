@@ -2,12 +2,13 @@ import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import MainPage from './components/views/MainPage/MainPage';
-import GlobalBar from './components/views/Navbar/GlobalBar';
+import Navbar from './components/views/Navbar/Navbar';
 
-import GlobalStyles from './components/utils/GlobalStyles';
 //Redux
 import { Provider } from 'react-redux';
 import store from './store';
+import GlobalStyles from './components/utils/GlobalStyles';
+
 // import { loadUser } from './actions/auth';
 // import setAuthToken from './utils/setAuthToken';
 
@@ -23,7 +24,7 @@ const App = () => {
       <Router>
         <>
           <GlobalStyles />
-          <GlobalBar />
+          <Navbar />
           <Switch>
             <Route exact path="/" component={MainPage} />
           </Switch>

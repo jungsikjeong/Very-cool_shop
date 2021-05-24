@@ -7,10 +7,9 @@ import setImage from '../../../../../assets/images/set.jpeg';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  padding-top: 15px;
-  padding-bottom: 15px;
+  width: 100%; // 사이즈가 너무 크면 조절
+  padding: 0.75rem;
   margin: 0 auto;
-  width: 50%;
 `;
 
 const Wrapper = styled.div`
@@ -23,7 +22,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
     font-size: 0.9rem;
-    margin-right: 20px;
+    margin-right: 1rem;
 
     :last-child {
       margin: 0;
@@ -34,10 +33,10 @@ const Wrapper = styled.div`
       text-align: left;
 
       .title {
-        margin-top: 10px;
+        margin-top: 0.5rem;
       }
       .content {
-        margin: 7px 0;
+        margin: 0.35rem 0;
         color: #808080;
         flex-wrap: wrap;
         flex-grow: 1;
@@ -55,6 +54,12 @@ const Wrapper = styled.div`
       }
     }
   }
+`;
+
+const SLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 const items = [
@@ -91,7 +96,7 @@ const SubMenuItem = () => {
       <Wrapper>
         {items.map((item) => (
           <div>
-            <Link to="/">
+            <SLink to="/">
               <img src={item.src} alt="top" />
 
               <div className="textWrap">
@@ -107,7 +112,7 @@ const SubMenuItem = () => {
                 </p>
                 <p>{item.price}</p>
               </div>
-            </Link>
+            </SLink>
           </div>
         ))}
       </Wrapper>

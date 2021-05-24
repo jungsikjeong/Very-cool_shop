@@ -11,7 +11,6 @@ import SubMenuSHOP from './sections/SubMenu/SubMenuSHOP';
 import SubMenuUNISEX from './sections/SubMenu/SubMenuUNISEX';
 import SubMenuSALE from './sections/SubMenu/SubMenuSALE';
 import SubMenuCOMMUNICATE from './sections/SubMenu/SubMenuCOMMUNICATE';
-import MobileMenu from './sections/MobileMenu/MobileMenu';
 
 const Container = styled.header`
   width: 100%;
@@ -19,10 +18,10 @@ const Container = styled.header`
   color: black;
   z-index: 100;
 
-  @media (max-width: 1024px) {
+  @media (min-width: 800px) and (max-width: 1024px) {
   }
 
-  @media (max-width: 768px) {
+  @media (min-width: 1024px) {
   }
 
   .icons {
@@ -41,7 +40,7 @@ const TopMenuWrap = styled.div`
   width: 100%;
   height: 3rem;
   padding: 2rem 1.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   opacity: 1;
   visibility: visible;
 
@@ -90,6 +89,7 @@ const Utility = styled.div`
   &.Fixed {
     display: flex;
     margin-left: auto;
+    padding-right: 1.5rem;
   }
 
   .icons-wrap {
@@ -118,11 +118,10 @@ const GlobalNav = styled.nav`
     position: fixed;
     top: 0;
     left: 0;
-    padding: 2rem 1.5rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -143,13 +142,14 @@ const SLink = styled(Link)`
   transition: 0.2s ease-in-out;
   font-size: 1rem;
   line-height: 12px;
+  padding: 1rem 0;
 
   :hover {
     color: #06bd9e;
   }
 `;
 
-const GlobalBar = () => {
+const NavbarPC = () => {
   const [HoverState, setHoverState] = useState('');
   const [PageYOffset, setPageYOffset] = useState(0);
   const [Fixed, setFixed] = useState(false);
@@ -212,13 +212,13 @@ const GlobalBar = () => {
         <ul>
           {/* 스크롤 아래로 내려서 GlobalNav display: fixed;가 되면 활성화됨 */}
           {Fixed && (
-            <div style={{ marginRight: 'auto' }}>
+            <li style={{ marginRight: 'auto' }}>
               <Link to="/">
                 <h1 className={Fixed && 'Fixed'}>
                   V I N T A G E <br />V E L L A
                 </h1>
               </Link>
-            </div>
+            </li>
           )}
           <li
             onMouseEnter={() => hoverHandler('shop')}
@@ -283,4 +283,4 @@ const GlobalBar = () => {
   );
 };
 
-export default GlobalBar;
+export default NavbarPC;
