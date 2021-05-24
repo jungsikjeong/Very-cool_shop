@@ -83,14 +83,14 @@ const SliderJS = () => {
   };
   return (
     <SliderStyle {...settings}>
-      {imgArray.map((item) => (
+      {imgArray.map((item, index) => (
         <>
           {isMobile ? (
-            <Inner>
+            <Inner key={index}>
               <img src={bannerM} alt="" />
             </Inner>
           ) : (
-            <Inner>
+            <Inner key={index}>
               <img src={bannerPc} alt="" />{' '}
             </Inner>
           )}

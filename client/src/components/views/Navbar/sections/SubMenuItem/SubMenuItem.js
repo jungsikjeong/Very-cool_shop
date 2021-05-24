@@ -94,8 +94,8 @@ const SubMenuItem = () => {
   return (
     <Container>
       <Wrapper>
-        {items.map((item) => (
-          <div>
+        {items.map((item, index) => (
+          <div key={index}>
             <SLink to="/">
               <img src={item.src} alt="top" />
 

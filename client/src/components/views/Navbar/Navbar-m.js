@@ -4,6 +4,7 @@ import { GoSearch } from 'react-icons/go';
 import { RiShoppingBagLine } from 'react-icons/ri';
 import { AiOutlineMenu } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
+import MobileSideMenu from './sections/MobileSideMenu/MobileSideMenu';
 
 const Container = styled.header`
   width: 100%;
@@ -129,12 +130,17 @@ const SLink = styled(Link)`
 const NavbarMobile = () => {
   const [PageYOffset, setPageYOffset] = useState(0);
   const [Fixed, setFixed] = useState(false);
+  const [MenuOpen, setMenuOpen] = useState(false);
 
   const scrollHandler = useCallback(() => {
     const { pageYOffset } = window;
     setFixed(PageYOffset > 40);
     setPageYOffset(pageYOffset);
   }, [PageYOffset]);
+
+  const MenuOpenHandler = () => {
+    setMenuOpen(!MenuOpen);
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', scrollHandler);
@@ -144,9 +150,14 @@ const NavbarMobile = () => {
 
   return (
     <Container>
+      <MobileSideMenu />
       <TopMenuWrap className={Fixed && 'Fixed'}>
         <LogoWrap>
-          <AiOutlineMenu className="icons" />
+          <AiOutlineMenu
+            className="icons"
+            onClick={MenuOpenHandler}
+            menuopen={MenuOpen.toString()}
+          />
           <Link to="/">
             <Logo>V E L L A</Logo>
           </Link>
