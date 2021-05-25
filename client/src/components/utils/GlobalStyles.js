@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
         font-size:20px;
         width: 100%;
         /* height: 100%; */
-    }
+        }
     
     body{
         font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -23,7 +23,7 @@ const GlobalStyles = createGlobalStyle`
         background-color:#fff;
         color:white;
         overflow-x: hidden;
-        /* height: 100vh; */
+        /* height: 100vh; */        
     }
 
 `;

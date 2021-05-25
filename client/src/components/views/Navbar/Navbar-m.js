@@ -97,11 +97,6 @@ const GlobalNav = styled.nav`
     left: 0;
   }
 
-  h1 {
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
-
   ul {
     display: flex;
     align-items: center;
@@ -117,7 +112,7 @@ const GlobalNav = styled.nav`
 
 const SLink = styled(Link)`
   transition: 0.2s ease-in-out;
-  font-size: 0.875rem;
+  font-size: 0.6rem;
   font-weight: bold;
   line-height: 12px;
   padding: 1rem 0;
@@ -150,14 +145,19 @@ const NavbarMobile = () => {
 
   return (
     <Container>
-      <MobileSideMenu />
+      {/* 메뉴 버튼 눌렀을시 활성화됨, 모바일 사이드메뉴 */}
+      {MenuOpen && (
+        <MobileSideMenu
+          menuopen={MenuOpen.toString()}
+          MenuOpenHandler={MenuOpenHandler}
+        />
+      )}
+
       <TopMenuWrap className={Fixed && 'Fixed'}>
         <LogoWrap>
-          <AiOutlineMenu
-            className="icons"
-            onClick={MenuOpenHandler}
-            menuopen={MenuOpen.toString()}
-          />
+          {/* 메뉴 버튼 */}
+          <AiOutlineMenu className="icons" onClick={MenuOpenHandler} />
+
           <Link to="/">
             <Logo>V E L L A</Logo>
           </Link>

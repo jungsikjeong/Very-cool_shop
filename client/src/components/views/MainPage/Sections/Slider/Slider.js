@@ -1,9 +1,15 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Slider from 'react-slick';
 import { useMediaQuery } from 'react-responsive';
-import bannerPc from '../../../../../assets/images/banner.png';
+import bannerPc01 from '../../../../../assets/images/banner.png';
+import bannerPc02 from '../../../../../assets/images/bannerPc02.jpg';
+import bannerPc03 from '../../../../../assets/images/bannerPc03.jpg';
 import bannerM from '../../../../../assets/images/banner-m.png';
+import {
+  SliderNextArrow,
+  SliderPrevArrow,
+} from '../../../../utils/SliderArrowBtn';
 
 const SliderStyle = styled(Slider)`
   /* width: 100%; */
@@ -16,26 +22,42 @@ const Inner = styled.div`
   img {
     width: 100%;
     max-width: 100%;
-    /* height: 600px; */
+    height: 15rem;
+
+    @media (min-width: 800px) {
+      height: 30rem;
+    }
   }
 `;
 
 // 테스트용도
-const imgArray = [
+const pcImgArray = [
   {
-    src: bannerPc,
+    src: bannerPc01,
   },
   {
-    src: '',
+    src: bannerPc02,
   },
   {
-    src: '',
+    src: bannerPc03,
   },
   {
-    src: '',
+    src: bannerPc02,
+  },
+];
+
+const mobileImgArray = [
+  {
+    src: bannerM,
   },
   {
-    src: '',
+    src: bannerPc02,
+  },
+  {
+    src: bannerPc03,
+  },
+  {
+    src: bannerM,
   },
 ];
 
@@ -47,11 +69,12 @@ const SliderJS = () => {
   const settings = {
     appendDots: (dots) => (
       <div
+        className="test"
         style={{
-          padding: '50px',
+          padding: '2.5rem',
         }}
       >
-        <ul style={{ margin: '0px' }}> {dots} </ul>
+        <ul style={{ margin: '0px' }}>{dots}</ul>
       </div>
     ),
     dots: true,
@@ -59,44 +82,51 @@ const SliderJS = () => {
     speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: false,
+  };
 
-    // responsive: [
-    //   {
-    //     breakpoint: 2000,
-    //     settings: {
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //       variableWidth: true,
-    //       infinite: true,
-    //       dots: true,
-    //     },
-    //   },
-    //   {
-    //     breakpoint: 600,
-    //     settings: {
-    //       dots: false,
-    //       slidesToShow: 1,
-    //       slidesToScroll: 1,
-    //     },
-    //   },
-    // ],
+  const settingsPc = {
+    appendDots: (dots) => (
+      <div
+        className="test"
+        style={{
+          padding: '2.5rem',
+        }}
+      >
+        <ul style={{ margin: '0px' }}>{dots}</ul>
+      </div>
+    ),
+
+    nextArrow: <SliderNextArrow />,
+    prevArrow: <SliderPrevArrow />,
+    dots: true,
+    infinite: true,
+    speed: 1000,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3500,
   };
   return (
-    <SliderStyle {...settings}>
-      {imgArray.map((item, index) => (
-        <>
-          {isMobile ? (
+    <>
+      {isMobile ? (
+        <SliderStyle {...settings}>
+          {mobileImgArray.map((item, index) => (
             <Inner key={index}>
-              <img src={bannerM} alt="" />
+              <img src={item.src} alt="" />
             </Inner>
-          ) : (
+          ))}
+        </SliderStyle>
+      ) : (
+        <SliderStyle {...settingsPc}>
+          {pcImgArray.map((item, index) => (
             <Inner key={index}>
-              <img src={bannerPc} alt="" />{' '}
+              <img src={item.src} alt="" />
             </Inner>
-          )}
-        </>
-      ))}
-    </SliderStyle>
+          ))}
+        </SliderStyle>
+      )}
+    </>
   );
 };
 

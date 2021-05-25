@@ -16,7 +16,11 @@ const MainPage = () => {
     query: '(max-width:767px)',
   });
 
-  return <Container>{/* <SliderJS /> */}</Container>;
+  return (
+    <Container>
+      <SliderJS />
+    </Container>
+  );
 };
 
 export default MainPage;

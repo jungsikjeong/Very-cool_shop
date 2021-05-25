@@ -1,9 +1,10 @@
 import 'antd/dist/antd.css';
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Menu } from 'antd';
 
 import { CloseOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const { SubMenu } = Menu;
 
@@ -12,8 +13,9 @@ const Container = styled.div`
   height: 100%;
   position: fixed;
   top: 0;
-  left: 0;
-  /* left: -100%; */
+  ${(props) => (props.menuopen ? 'left: 0' : 'left: :-100%')};
+  /* left: 0; // 0이면 메뉴가 활성화됨
+  /* left: -100%; */ // 이렇게하면 비활성화 */
   z-index: 1000;
   transition: all 0.3s ease;
 `;
@@ -27,7 +29,7 @@ const Wrapper = styled.div`
 `;
 
 const Top = styled.div`
-  position: fixed;
+  ${(props) => (props.menuopen ? 'position:fixed' : 'position:relative')};
   top: 0;
   left: 0;
   display: flex;
@@ -69,73 +71,139 @@ const MenuStyle = styled(Menu)`
   }
 `;
 
-const SubMenuStyle = styled(SubMenu)`
-  padding: 0;
-  margin: 0;
+const SubMenuWrap = styled.div`
+  background: #f8f8f8;
+  padding: 0.6rem 1.7rem;
+  overflow: hidden;
 `;
 
-const MobileSideMenu = () => {
-  const [current, setCurrent] = useState();
+const SubMenuList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+`;
 
-  const handleClick = (e) => {
-    console.log('click ', e);
-    setCurrent({ current: e.key });
-  };
+const SubMenuItem = styled.li`
+  padding: 0.2rem 0;
+  width: 50%;
+`;
 
+const SLink = styled(Link)`
+  line-height: 1rem;
+  height: 1rem;
+  color: #777;
+  letter-spacing: -0.28px;
+  font-weight: 400;
+`;
+
+const MobileSideMenu = ({ menuopen, MenuOpenHandler }) => {
   return (
     <Container>
       <Wrapper>
         <Top>
-          <span>VELLA</span>
-          <CloseOutlined className="close-icon" />
+          <Link to="#">
+            <span>VELLA</span>
+          </Link>
+
+          {/* 모바일 메뉴 닫기 버튼 */}
+          <CloseOutlined className="close-icon" onClick={MenuOpenHandler} />
         </Top>
 
-        <MenuStyle
-          onClick={handleClick}
-          defaultSelectedKeys={['1']}
-          defaultOpenKeys={['sub1']}
-          mode="inline"
-        >
-          <SubMenuStyle key="sub2" title="SHOP">
-            <SubMenuStyle key="sub3" title="TOP">
-              <MenuStyle.Item key="1">TOP</MenuStyle.Item>
-              <MenuStyle.Item key="2">SLEEVE</MenuStyle.Item>
-            </SubMenuStyle>
-
-            <MenuStyle.Item key="3">ONPEIECE</MenuStyle.Item>
-            <MenuStyle.Item key="4">OUTER</MenuStyle.Item>
-            <MenuStyle.Item key="5">BOTTOM</MenuStyle.Item>
-            <MenuStyle.Item key="6">SET</MenuStyle.Item>
-
-            <SubMenuStyle key="sub4" title="ACC">
-              <MenuStyle.Item key="7">ACCESSORY</MenuStyle.Item>
-              <MenuStyle.Item key="8">CAP&HAT</MenuStyle.Item>
-              <MenuStyle.Item key="9">BAG</MenuStyle.Item>
-              <MenuStyle.Item key="10">ETC</MenuStyle.Item>
-            </SubMenuStyle>
-            <MenuStyle.Item key="11">BRAND</MenuStyle.Item>
-          </SubMenuStyle>
-
-          <SubMenu key="sub5" title="UNISEX&BRAND">
-            <Menu.Item key="12">TOP</Menu.Item>
-            <Menu.Item key="13">ONEPEICE</Menu.Item>
-            <Menu.Item key="14">OUTER</Menu.Item>
-            <Menu.Item key="15">BOTTOM</Menu.Item>
-            <Menu.Item key="16">SET</Menu.Item>
+        <MenuStyle defaultSelectedKeys={['1']} mode="inline">
+          <SubMenu key="sub1" title="SHOP">
+            <SubMenuWrap>
+              <SubMenuList>
+                <SubMenuItem>
+                  <SLink to="#">TOP</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">SLEEVE</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">ONPEIECE</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">OUTER</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">BOTTOM</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">SET</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">ACCESSORY</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">CAP&HAT</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">BAG</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">ETC</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">BRAND</SLink>
+                </SubMenuItem>
+              </SubMenuList>
+            </SubMenuWrap>
           </SubMenu>
 
-          <SubMenu key="sub6" title="BIG SALE">
-            <Menu.Item key="17">TOP</Menu.Item>
-            <Menu.Item key="18">ONEPEICE</Menu.Item>
-            <Menu.Item key="19">OUTER</Menu.Item>
-            <Menu.Item key="20">BOTTOM</Menu.Item>
-            <Menu.Item key="21">SET</Menu.Item>
+          <SubMenu key="sub2" title="UNISEX&BRAND">
+            <SubMenuWrap>
+              <SubMenuList>
+                <SubMenuItem>
+                  <SLink to="#">TOP</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">ONPEIECE</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">OUTER</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">BOTTOM</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">SET</SLink>
+                </SubMenuItem>
+              </SubMenuList>
+            </SubMenuWrap>
           </SubMenu>
 
-          <SubMenu key="sub7" title="COMMUNICATE">
-            <Menu.Item key="22">CS CENTER</Menu.Item>
-            <Menu.Item key="23">Q N A</Menu.Item>
-            <Menu.Item key="24">REVIEW</Menu.Item>
+          <SubMenu key="sub3" title="BIG SALE">
+            <SubMenuWrap>
+              <SubMenuList>
+                <SubMenuItem>
+                  <SLink to="#">TOP</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">ONPEIECE</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">OUTER</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">BOTTOM</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">SET</SLink>
+                </SubMenuItem>
+              </SubMenuList>
+            </SubMenuWrap>
+          </SubMenu>
+
+          <SubMenu key="sub4" title="COMMUNICATE">
+            <SubMenuWrap>
+              <SubMenuList>
+                <SubMenuItem>
+                  <SLink to="#">Q & A</SLink>
+                </SubMenuItem>
+                <SubMenuItem>
+                  <SLink to="#">리뷰</SLink>
+                </SubMenuItem>
+              </SubMenuList>
+            </SubMenuWrap>
           </SubMenu>
         </MenuStyle>
       </Wrapper>
