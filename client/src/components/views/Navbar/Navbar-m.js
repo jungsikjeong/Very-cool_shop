@@ -13,7 +13,7 @@ const Container = styled.header`
   z-index: 100;
 
   .icons {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .search-icon {
@@ -52,6 +52,8 @@ const Logo = styled.h1`
   font-weight: bold;
   white-space: pre-wrap;
   margin-left: 0.6rem;
+  letter-spacing: -1.5px;
+  font-family: 'Dancing Script', cursive;
 `;
 
 const Utility = styled.div`
@@ -76,7 +78,7 @@ const Utility = styled.div`
 
     .basket-length {
       position: absolute;
-      top: 0.4rem;
+      top: 0.2rem;
       font-size: 0.8rem;
     }
   }
@@ -172,7 +174,7 @@ const NavbarMobile = () => {
           <Link to="#">
             <div className="icons-wrap basket-icon">
               <RiShoppingBagLine className="icons" />{' '}
-              <span className="basket-length">0</span>
+              <span className="basket-length"></span>
               {/* 나중에 length로 수량을 받아올 예정 */}
             </div>
           </Link>

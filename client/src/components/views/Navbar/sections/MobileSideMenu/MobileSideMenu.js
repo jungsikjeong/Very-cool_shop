@@ -44,6 +44,8 @@ const Top = styled.div`
   z-index: 3;
 
   span {
+    /* letter-spacing: -1.5px; */
+    font-family: 'Dancing Script', cursive;
     font-weight: bold;
   }
 
@@ -100,7 +102,7 @@ const MobileSideMenu = ({ menuopen, MenuOpenHandler }) => {
     <Container>
       <Wrapper>
         <Top>
-          <Link to="#">
+          <Link to="/" onClick={MenuOpenHandler}>
             <span>VELLA</span>
           </Link>
 
