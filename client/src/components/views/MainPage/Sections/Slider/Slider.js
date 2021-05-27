@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import { useMediaQuery } from 'react-responsive';
-import bannerPc01 from '../../../../../assets/images/banner.png';
-import bannerPc02 from '../../../../../assets/images/bannerPc02.jpg';
-import bannerM from '../../../../../assets/images/banner-m.png';
-import bannerM02 from '../../../../../assets/images/banner-m02.jpg';
-import bannerM03 from '../../../../../assets/images/banner-m03.jpg';
+import bannerPc01 from '../../../../../assets/images/banner/banner.png';
+import bannerPc02 from '../../../../../assets/images/banner/bannerPc02.jpg';
+import bannerM from '../../../../../assets/images/banner/banner-m.png';
+import bannerM02 from '../../../../../assets/images/banner/banner-m02.jpg';
+import bannerM03 from '../../../../../assets/images/banner/banner-m03.jpg';
 import {
   SliderNextArrow,
   SliderPrevArrow,
@@ -14,14 +14,13 @@ import {
 import { Link } from 'react-router-dom';
 
 const SliderStyle = styled(Slider)`
-  /* width: 100%; */
   overflow: hidden;
+  margin-bottom: 3rem;
 `;
 
 const Inner = styled.div`
   position: relative;
   z-index: 1;
-  /* height: 600px; */
 
   img {
     width: 100%;
@@ -154,7 +153,7 @@ const SliderJS = () => {
           </Inner>
         </SliderStyle>
       ) : (
-        <SliderStyle {...settings}>
+        <SliderStyle {...settingsPc}>
           <Inner>
             <SLink to="#">
               <img src={bannerPc01} alt="" />

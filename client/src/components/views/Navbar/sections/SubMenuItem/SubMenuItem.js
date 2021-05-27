@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import topImage from '../../../../../assets/images/top01.jpg';
-import bottomImage from '../../../../../assets/images/bottom.jpeg';
-import onepieceImage from '../../../../../assets/images/onepiece.jpg';
-import setImage from '../../../../../assets/images/set.jpeg';
+import topImage from '../../../../../assets/images/shop/top01.jpg';
+import bottomImage from '../../../../../assets/images/shop/bottom.jpeg';
+import onepieceImage from '../../../../../assets/images/shop/onepiece.jpg';
+import setImage from '../../../../../assets/images/shop/set.jpeg';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`

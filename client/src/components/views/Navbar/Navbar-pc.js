@@ -97,6 +97,9 @@ const Utility = styled.div`
     padding: 0 0 0 1rem;
     align-items: center;
     flex-direction: column;
+    :hover {
+      color: #06bd9e;
+    }
 
     span {
       font-size: 0.65rem;

@@ -8,6 +8,7 @@ const SLink = styled(Link)`
 
   :hover {
     border-bottom: 1px solid black;
+    color: #06bd9e;
   }
 `;
 
