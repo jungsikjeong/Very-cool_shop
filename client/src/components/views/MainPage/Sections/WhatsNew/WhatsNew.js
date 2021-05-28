@@ -47,6 +47,7 @@ const SliderStyle = styled(Slider)`
       height: 100%;
     }
   }
+
   width: 100%;
   margin-bottom: 3.75rem;
   padding: 0 1.25rem;
@@ -85,6 +86,7 @@ const SLink = styled(Link)`
   font-weight: 500;
   width: 100%;
   height: 100%;
+
   :hover {
     color: black;
   }
@@ -94,12 +96,6 @@ const SLink = styled(Link)`
       width: 287px;
       height: 382px;
       margin: 1rem 0;
-
-      /* 이미지 커지기전
-      287/382
-      이미지 커진 후 
-      384/512
-       */
     }
     width: 3.75rem;
     height: 5rem;
@@ -173,14 +169,13 @@ const WhatsNew = () => {
   });
 
   const settings = {
-    className: 'center',
-    centerMode: true,
-    centerPadding: '0',
+    className: 'slider variable-width',
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 2,
+    variableWidth: true,
   };
 
   const settingsPC = {
@@ -201,7 +196,7 @@ const WhatsNew = () => {
       {isMobile ? (
         // Mobile
         <SliderStyle {...settings}>
-          <Inner>
+          <Inner style={{ width: '105px' }}>
             <NewItemWrap>
               <SLink to="#">
                 <div className="image">

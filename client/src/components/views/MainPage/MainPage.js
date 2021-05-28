@@ -9,6 +9,7 @@ import stickyBanner2 from '../../../assets/images/banner/stickyBanner02.jpg';
 import SliderJS from './Sections/Slider/Slider';
 import WhatsNew from './Sections/WhatsNew/WhatsNew';
 import StyleStorySection from './Sections/StyleStory/StyleStorySection';
+import Footer from '../Footer/Footer';
 
 const Container = styled.div`
   color: black;
@@ -99,6 +100,9 @@ const MainPage = () => {
 
       {/* 새로운 아이템 소식 섹션 */}
       <WhatsNew />
+
+      {/* 바닥 */}
+      <Footer />
     </Container>
   );
 };
