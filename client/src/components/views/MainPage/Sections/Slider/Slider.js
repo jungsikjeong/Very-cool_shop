@@ -104,6 +104,7 @@ const SliderJS = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: false,
+    pauseOnHover: false,
   };
 
   const settingsPc = {
@@ -117,7 +118,6 @@ const SliderJS = () => {
         <ul style={{ margin: '0px' }}>{dots}</ul>
       </div>
     ),
-
     nextArrow: <SliderNextArrow />,
     prevArrow: <SliderPrevArrow />,
     dots: true,
@@ -126,7 +126,8 @@ const SliderJS = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3500,
+    pauseOnHover: false,
+    autoplaySpeed: 2500,
   };
 
   return (

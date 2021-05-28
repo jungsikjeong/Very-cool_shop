@@ -176,6 +176,7 @@ const WhatsNew = () => {
     slidesToShow: 3,
     slidesToScroll: 2,
     variableWidth: true,
+    pauseOnHover: false,
   };
 
   const settingsPC = {
@@ -188,6 +189,7 @@ const WhatsNew = () => {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 2,
+    pauseOnHover: false,
   };
 
   return (
