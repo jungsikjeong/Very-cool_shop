@@ -68,6 +68,10 @@ const TextWrap = styled.div`
 `;
 
 const SLink = styled(Link)`
+  :hover {
+    color: #fff;
+  }
+
   button {
     font-size: 0.9rem;
     padding: 0.6rem;

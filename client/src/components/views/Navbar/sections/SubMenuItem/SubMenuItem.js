@@ -60,6 +60,10 @@ const SLink = styled(Link)`
   display: flex;
   flex-direction: column;
   height: 100%;
+
+  :hover {
+    color: black;
+  }
 `;
 
 const items = [
